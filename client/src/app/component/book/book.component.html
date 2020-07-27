@@ -1,0 +1,68 @@
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> 
+   
+ <div class= "row">
+    <div class="col s12">
+        <div class="card">
+            <div class="card-content white-text">
+                <div class="row">
+                    <div class="col s5">
+                        <form #bookForm="ngForm" (ngSubmit)="onSubmit(bookForm)">
+                            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="bookService.selectedBook._id">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="name" #name="ngModel" [(ngModel)]="bookService.selectedBook.name" placeholder="enter book name">
+                                  
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="number" name="code" #name="ngModel" [(ngModel)]="bookService.selectedBook.code" placeholder="enter code">
+                                
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="author" #name="ngModel" [(ngModel)]="bookService.selectedBook.author" placeholder="enter author">
+                                   
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="number" name="count" #name="ngModel" [(ngModel)]="bookService.selectedBook.count" placeholder="enter count">
+                                 
+                                </div>
+                            </div>
+
+                              <div class="input-field col s12">
+                                  <button class="btn btn-custom right" type="button"(click)="resetForm(bookForm)">reset</button>
+                              <button class ="btn btn-custom right" type="submit">submit</button>
+                                </div>
+
+                        </form>
+                    </div>
+                    <div class="col s7">
+                        <table class="responsive-table highlight">
+                            <thead>
+                                <tr>
+                                    <th>name</th>
+                                    <th>code</th>
+                                    <th>author</th>
+                                    <th>count</th>
+                                </tr>
+                            </thead>
+                            <tr *ngFor="let book of bookService.books">
+                                <td>{{book.name}}</td>
+                                <td>{{book.code}}</td>
+                                <td>{{book.author}}</td>
+                                <td>{{book.count}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  

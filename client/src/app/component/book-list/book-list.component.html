@@ -1,0 +1,54 @@
+<div class='card'>
+    <div class='card-header'>
+        {{title}}
+
+    </div>
+    <div class='card-body'>
+        <div class='table-responsive'>
+            <table class='table'>
+                <thead>
+                    <tr>
+                        <th>
+                            <button class='btn btn-primary'
+                                (click)='toggleImage()'>
+                                {{showImage? 'Hide' : 'Show'}} Image
+                            </button>
+                        </th>
+                        <th>Book Name</th>
+                        <th>Code</th>
+                        <th>Author</th>
+                        <th>Price(₹)</th>
+                        <th>5 Star Rating</th>
+                        <th>Action</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                   <tr *ngFor='let book of books'>
+                       <td><img *ngIf='showImage' [src]='book.imageUrl'
+                        [title]='book.bookName'
+                        [style.width.px]= 'imageWidth'
+                        [style.margin.px]='imageMargin'>
+                    </td>
+                    <td>{{ book.bookName }}</td>
+                    <td>{{ book.bookCode }}</td>
+                    <td>{{ book.authorName }}</td>
+                    <td>{{ book.price }}</td>
+                    <td>{{ book.starRating }}</td>
+
+                    <td>
+                        <a href="/buy" class="btn btn-primary">Buy</a>
+                        <button (click)= "edit(book)" class="btn btn-success">Edit</button>
+                        <button (click) = "delete(book)"class="btn btn-danger">Delete</button>
+
+                    </td>
+                  
+                   </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    
+</div>
