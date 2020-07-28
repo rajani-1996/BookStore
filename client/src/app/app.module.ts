@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BooksService } from './books.service';
 import { AuthGuard } from './auth.guard';
+import { AdminGuard } from './admin.guard';
 import { AuthService } from './auth.service';
 import { TokenInterceptorService } from './token-interceptor.service';
 
@@ -24,6 +25,7 @@ import { NewBookComponent } from './component/new-book/new-book.component';
 import { EditBookComponent } from './component/edit-book/edit-book.component';
 import { BookComponent } from './component/book/book.component';
 import { BookService } from './shared/book.service';
+import { AdminComponent } from './component/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { BookService } from './shared/book.service';
     BookListComponent,
     NewBookComponent,
     EditBookComponent,
-    BookComponent
+    BookComponent,
+    AdminComponent
     
   ],
   imports: [
@@ -47,7 +50,7 @@ import { BookService } from './shared/book.service';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [AuthService,AuthGuard,BooksService,BookService,
+  providers: [AuthService,AdminGuard,AuthGuard,BooksService,BookService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,

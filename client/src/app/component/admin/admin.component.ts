@@ -2,20 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 
-
+ 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.css']
 })
-export class LoginComponent implements OnInit {
-
+export class AdminComponent implements OnInit {
   loginUserData = {email:"",password:""};
+
+
   constructor(private _auth: AuthService,
-    private _router:Router ) { }
+    private _router:Router) { }
 
   ngOnInit() {
   }
+
   loginUser(){
     this._auth.loginUser(this.loginUserData)
     .subscribe(
@@ -33,5 +35,8 @@ export class LoginComponent implements OnInit {
 
 
 }
+
+
+
 
 

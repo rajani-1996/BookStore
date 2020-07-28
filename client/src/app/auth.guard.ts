@@ -21,3 +21,21 @@ export class AuthGuard implements CanActivate {
 
   
 }
+
+// canActivate():boolean
+// {
+//     if (this._authService.loggedInAdmin()) {
+//     console.log('true');
+//     return true;
+//   }
+//   else {
+//     console.log('you have to be an admin to view this page!!');
+//     alert('Admin privileges denied!!')
+//     this._router.navigate(['/login']);
+//   }
+// }
+
+// }
+
+
+

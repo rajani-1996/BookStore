@@ -22,8 +22,40 @@ export class AuthService {
    return this.http.post<any>(this._loginUrl,user)
   }
   loggedIn(){
-    return !!localStorage.getItem('token')
+   if(localStorage.getItem('token')=="user")
+   {
+      return true
+   }
+   else if(localStorage.getItem('token')=="admin")
+   {
+     return true
+    }
+    else {
+      return false
+    }
   }
+  loggedInUser()
+     {
+       if(localStorage.getItem('token')=="user")
+       {
+         return true
+       }
+       else{
+         return false
+       }
+     }
+  
+loggedInAdmin()
+{
+  if(localStorage.getItem('token')=="admin")
+  {
+    return true
+  }
+  else{
+    return false
+  }
+}
+
   logoutUser(){
     localStorage.removeItem('token')
     this._router.navigate(['/'])
