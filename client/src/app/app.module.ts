@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BooksService } from './books.service';
 import { AuthGuard } from './auth.guard';
-import { AdminGuard } from './admin.guard';
+
 import { AuthService } from './auth.service';
 import { TokenInterceptorService } from './token-interceptor.service';
 
@@ -50,7 +50,7 @@ import { AdminComponent } from './component/admin/admin.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [AuthService,AdminGuard,AuthGuard,BooksService,BookService,
+  providers: [AuthService,AuthGuard,BooksService,BookService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,

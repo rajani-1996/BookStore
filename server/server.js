@@ -147,9 +147,7 @@ app.post('/register',function(req,res){
 })
 
 app.post('/login',(req,res)=>{
-    let userData =req.body.login;
-    console.log("data getting on server")
-    console.log(userData)
+    let userData =req.body;
     User.findOne({email: userData.email},(err,user)=>{
         if(err)
             {
@@ -166,25 +164,13 @@ app.post('/login',(req,res)=>{
                     res.status(401).send('invalid password')
                 }
             else{
-                if(user.role =='admin')
-                {
+               
                     let payload = {subject:user._id}
-                    let token ="admin"
+                    let token = jwt.sign(payload,'secretKey') 
                     res.status(200).send({token})
-                }
-                else{
                    
-                    
-                    let token='user'
-                    res.status(200).send({token})
-
-                      // let payload = {subject:user._id}
-                // let token = jwt.sign(payload,'secretKey') 
-                
                 }
-              
-                
-                }
+               
             }
         }
     })

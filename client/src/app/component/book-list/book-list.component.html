@@ -38,8 +38,8 @@
 
                     <td>
                         <a href="/buy" class="btn btn-primary">Buy</a>
-                        <button (click)= "edit(book)"   *ngIf="!_authService.loggedInAdmin()" class="btn btn-success">Edit</button>
-                        <button (click) = "delete(book)"  *ngIf="!_authService.loggedInAdmin()"  class="btn btn-danger">Delete</button>
+                        <button (click)= "edit(book)"   class="btn btn-success">Edit</button>
+                        <button (click) = "delete(book)" class="btn btn-danger">Delete</button>
 
                     </td>
                   

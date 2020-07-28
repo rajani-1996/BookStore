@@ -22,15 +22,14 @@ export class AdminComponent implements OnInit {
     this._auth.loginUser(this.loginUserData)
     .subscribe(
       res=>{
-        console.log(res["token"])
+        console.log(res)
         localStorage.setItem('token',res["token"])
-        console.log("the role is below displayed")
-        console.log(localStorage.getItem('token'))
+     
         this._router.navigate(['/add-book'])
         },
       err => console.log(err)
     )
-    console.log(this.loginUserData)
+ 
   }
 
 

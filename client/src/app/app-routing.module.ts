@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from 'src/app/auth.guard';
-import { AdminGuard } from 'src/app/admin.guard';
+// import { AdminGuard } from 'src/app/admin.guard';
 
 import { ContactComponent } from './component/contact/contact.component';
 import { EditBookComponent } from './component/edit-book/edit-book.component';
@@ -24,8 +24,8 @@ const routes: Routes = [
   {path:'edit-book',component:EditBookComponent,canActivate: [AuthGuard]},
   { path:'' ,component:CarouselComponent},
   {path:'book-list',component:BookListComponent,canActivate: [AuthGuard]},
-  {path:'add-book',component:NewBookComponent,canActivate: [AdminGuard]},
-  {path:"admin",component:AdminComponent,canActivate:[AuthGuard]},
+  {path:'add-book',component:NewBookComponent,canActivate: [AuthGuard]},
+  {path:"admin",component:AdminComponent,canActivate: [AuthGuard]},
   // { path:'product-details' ,component:ProductDetailsComponent},
   {path:'buy',component:BookComponent},
   // { path:'shoppingcart' ,component:ShoppingcartComponent},
