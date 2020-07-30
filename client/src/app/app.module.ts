@@ -25,7 +25,7 @@ import { NewBookComponent } from './component/new-book/new-book.component';
 import { EditBookComponent } from './component/edit-book/edit-book.component';
 import { BookComponent } from './component/book/book.component';
 import { BookService } from './shared/book.service';
-import { AdminComponent } from './component/admin/admin.component';
+
 
 @NgModule({
   declarations: [
@@ -40,8 +40,8 @@ import { AdminComponent } from './component/admin/admin.component';
     BookListComponent,
     NewBookComponent,
     EditBookComponent,
-    BookComponent,
-    AdminComponent
+    BookComponent
+
     
   ],
   imports: [

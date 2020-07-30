@@ -14,7 +14,7 @@ import { NewBookComponent } from './component/new-book/new-book.component';
 // import {ProductDetailsComponent} from './component/home/product-details/product-details.component';
 // import { ProductComponent} from './component/product/product.component';
 import{ BookComponent} from './component/book/book.component';
-import { AdminComponent } from './component/admin/admin.component';
+
 // import{ShoppingcartComponent} from './component/product/shoppingcart/shoppingcart.component'
 const routes: Routes = [
   { path:'contact' ,component:ContactComponent},
@@ -25,7 +25,7 @@ const routes: Routes = [
   { path:'' ,component:CarouselComponent},
   {path:'book-list',component:BookListComponent,canActivate: [AuthGuard]},
   {path:'add-book',component:NewBookComponent,canActivate: [AuthGuard]},
-  {path:"admin",component:AdminComponent,canActivate: [AuthGuard]},
+
   // { path:'product-details' ,component:ProductDetailsComponent},
   {path:'buy',component:BookComponent},
   // { path:'shoppingcart' ,component:ShoppingcartComponent},

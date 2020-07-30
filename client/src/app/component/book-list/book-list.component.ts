@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { BookModel } from  './book.model';
-import { BooksService } from 'src/app/books.service';
+import { BooksService } from '../../books.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-book-list',
@@ -15,7 +16,7 @@ export class BookListComponent implements OnInit {
   imageWidth: number=100;
   imageMargin: number=20;
   showImage: boolean = false;
-   constructor(private booksService:BooksService,private router:Router){
+   constructor(private booksService:BooksService,private router:Router,public _authService:AuthService){
 
    }
    toggleImage(): void{

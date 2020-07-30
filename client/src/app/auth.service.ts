@@ -24,10 +24,24 @@ export class AuthService {
   loggedIn(){
     return !!localStorage.getItem('token')
   }
+loggedInAdmin(){
+  if(localStorage.getItem('token')=='admin'){
+    return true;
+}
+  else{
+    return false;
+  }
 
-  
+}
+loggedInUser(){
+  if(localStorage.getItem('token')=='user'){
+    return true;
+}
+  else{
+    return false;
+  }
 
-
+}
   logoutUser(){
     localStorage.removeItem('token')
     this._router.navigate(['/'])

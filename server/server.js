@@ -26,33 +26,34 @@ app.use(cors());
 
 app.use('/book',bookController);
 
-function verifyToken(req,res,next){
-    if (!req.headers.authorization){
-         return res.status(401).send('Unauthorized request')
-    }
-    let token = req.headers.authorization.split(' ')[1]
-    if (token === 'null'){
-        return res.status(401).send('Unauthorized request')
-    }
-    let payload = jwt.verify(token,'secretKey')
-    if(!payload){
-        return res.status(401).send('Unauthorized request')
-    }
-    req.userId = payload.subject
-    next()
+// function verifyToken(req,res,next){
+//     if (!req.headers.authorization){
+//          return res.status(401).send('Unauthorized request')
+//     }
+//     let token = req.headers.authorization.split(' ')[1]
+//     if (token === 'null'){
+//         return res.status(401).send('Unauthorized request')
+//     }
+//     let payload = jwt.verify(token,'secretKey')
+//     if(!payload){
+//         return res.status(401).send('Unauthorized request')
+//     }
+//     req.userId = payload.subject
+//     next()
 
-}
+// }
 
 
-app.get('/books',verifyToken,function(req,res){
+app.get('/books',function(req,res){
     res.header("Access-Control-Allow-Origin","*")
     res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE,OPTIONS')
     BookData.find()
           .then(function(books){
+              console.log(books);
               res.send(books);
           });
 });
-app.post('/insert',verifyToken,function(req,res){
+app.post('/insert',function(req,res){
     res.header("Access-Control-Allow-Origin","*")
     res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE,OPTIONS')
     console.log(req.body);
@@ -73,7 +74,7 @@ book.save();
 });
 
 
-app.post('/edit',verifyToken,function(req,res){
+app.post('/edit',function(req,res){
     res.header("Access-Control-Allow-Origin","*");
     res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE,OPTIONS');
     console.log(req.body);
@@ -101,7 +102,7 @@ BookData.updateOne(
      
 });
 
-app.post('/delete',verifyToken,function(req,res){
+app.post('/delete',function(req,res){
     res.header("Access-Control-Allow-Origin","*");
     res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE,OPTIONS');
     console.log(req.body);
@@ -119,7 +120,7 @@ app.post('/delete',verifyToken,function(req,res){
     }
 console.log("backend server item is " +book._id);
 BookData.deleteOne(
-    {_id:req.body.bookItem._id})
+    {_id:req.body.book._id})
     .then(function(books){
         res.send(books);
     });
@@ -136,8 +137,9 @@ app.post('/register',function(req,res){
      user.save((err,registeredUser)=>{
          if(err){console.log(err)}
          else{
-            let payload = {subject:user._id}
-            let token = jwt.sign(payload,'secretKey') 
+            // let payload = {subject:user._id}
+            // let token = jwt.sign(payload,'secretKey') 
+            let token ="user"
             res.status(200).send({token})}
 
      })
@@ -165,8 +167,9 @@ app.post('/login',(req,res)=>{
                 }
             else{
                
-                    let payload = {subject:user._id}
-                    let token = jwt.sign(payload,'secretKey') 
+                    // let payload = {subject:user._id}
+                    // let token = jwt.sign(payload,'secretKey') 
+                    let token = "user"
                     res.status(200).send({token})
                    
                 }

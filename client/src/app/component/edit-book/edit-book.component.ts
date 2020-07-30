@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookModel } from '../book-list/book.model';
 import { BooksService } from 'src/app/books.service';
 import { Router } from '@angular/router';
+import {AuthService} from 'src/app/auth.service';
 
 @Component({
   selector: 'app-edit-book',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class EditBookComponent implements OnInit {
   bookItem = new BookModel(null,null,null,null,null,null,null,null);
 
-  constructor(private booksService:BooksService,private router:Router) { }
+  constructor(private booksService:BooksService,private router:Router,private authService:AuthService) { }
 
   ngOnInit(): void {
     this.bookItem = this.booksService.hi();

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BookModel } from '../app/component/book-list/book.model';
+import {AuthService} from 'src/app/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class BooksService {
    private book:BookModel;
 
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private authService:AuthService) { }
   getBooks(){
     return this.http.get("http://localhost:3000/books");
   }
@@ -38,6 +39,7 @@ export class BooksService {
     console.log("delete clicked")
     return this.http.post("http://localhost:3000/delete",{"book":book})
     .subscribe(data=>{console.log(data)})
+   
   }
 }
 

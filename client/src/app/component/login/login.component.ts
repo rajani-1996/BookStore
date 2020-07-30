@@ -11,26 +11,71 @@ import { AuthService } from 'src/app/auth.service';
 export class LoginComponent implements OnInit {
 
   loginUserData = {email:"",password:""};
-  constructor(private _auth: AuthService,
+  constructor(private _authService: AuthService,
     private _router:Router ) { }
 
   ngOnInit() {
   }
   loginUser(){
-    this._auth.loginUser(this.loginUserData)
-    .subscribe(
-      res=>{
-        console.log(res)
-        localStorage.setItem('token',res["token"])
-     
-        this._router.navigate(['/'])
-        },
-      err => console.log(err)
-    )
- 
-  }
+    // this._authService.loginUser(this.loginUserData)
+    // .subscribe(
+    //   res=>{
+    //     console.log(res)
+    //     localStorage.setItem('token',res["token"]),
+    //     localStorage.setItem('user',this.loginUserData.email),
+    //     localStorage.setItem('pass',this.loginUserData.password),
+    //     this._router.navigate(['/'])
+    //     },
+    //   err => console.log(err)
+    // )
 
-
+console.log(this.loginUserData.email)
+console.log(this.loginUserData.password)
+if(this.loginUserData.email=="rajanirussal@gmail.com" && this.loginUserData.password=="Rajani@1996"){
+  localStorage.setItem('token','admin')
+  this._router.navigate(['/'])
 }
+else{
+  this._authService.loginUser(this.loginUserData)
+  .subscribe(
+    res=>{
+      console.log(res.token)
+      localStorage.setItem('token',res["token"])
+      this._router.navigate(['/'])
+
+    },
+    err => console.log(err)
+  )
+}
+
+
+
+  }
+}
+
+  // loginUserData = {email:"",password:""};
+  // constructor(private _auth: AuthService,
+  //   private _router:Router ) { }
+
+  // ngOnInit() {
+  // }
+  // loginUser(){
+  //   this._auth.loginUser(this.loginUserData)
+  //   .subscribe(
+  //     res=>{
+  //       console.log(res)
+  //       localStorage.setItem('token',res["token"])
+     
+  //       this._router.navigate(['/'])
+  //       },
+  //     err => console.log(err)
+  //   )
+ 
+  // }
+
+
+
+
+
 
 
